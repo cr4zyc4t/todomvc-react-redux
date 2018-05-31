@@ -11,7 +11,8 @@ class Footer extends React.Component {
     clearCompleted: PropTypes.func.isRequired,
   }
 
-  setFilter = (filter) => () => {
+  setFilter = (filter) => (e) => {
+    e.preventDefault();
     this.props.setFilter(filter);
   }
 

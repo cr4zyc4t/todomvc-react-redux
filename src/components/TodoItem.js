@@ -22,6 +22,13 @@ class TodoItem extends React.Component {
     this.taskInput = React.createRef();
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (nextProps.id !== this.props.id
+      || nextProps.title !== this.props.title
+      || nextProps.completed !== this.props.completed
+      || nextState !== this.state);
+  }
+
   componentDidUpdate() {
     if (this.state.editing) {
       this.taskInput.current.focus();
