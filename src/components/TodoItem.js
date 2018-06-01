@@ -7,8 +7,8 @@ class TodoItem extends React.Component {
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    delete: PropTypes.func.isRequired,
-    edit: PropTypes.func.isRequired,
+    editTask: PropTypes.func.isRequired,
+    deleteTask: PropTypes.func.isRequired,
     toggleTask: PropTypes.func.isRequired,
   }
 
@@ -22,18 +22,16 @@ class TodoItem extends React.Component {
     this.taskInput = React.createRef();
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return (nextProps.id !== this.props.id
-      || nextProps.title !== this.props.title
-      || nextProps.completed !== this.props.completed
-      || nextState !== this.state);
-  }
-
   componentDidUpdate() {
     if (this.state.editing) {
       this.taskInput.current.focus();
     }
   }
+
+
+  deleteTask = () => this.props.deleteTask(this.props.id)
+
+  toggleTask = () => this.props.toggleTask(this.props.id)
 
   handleEdit = () => {
     this.setState({
@@ -47,7 +45,7 @@ class TodoItem extends React.Component {
     });
     let title = this.taskInput.current.value.trim();
     if (title && title !== this.props.title) {
-      this.props.edit(title);
+      this.props.editTask(this.props.id, title);
     }
   }
 
@@ -69,12 +67,12 @@ class TodoItem extends React.Component {
             className="toggle"
             type="checkbox"
             checked={this.props.completed}
-            onChange={this.props.toggleTask}
+            onChange={this.toggleTask}
           />
           <label onDoubleClick={this.handleEdit}>
             {this.props.title}
           </label>
-          <button className="destroy" onClick={this.props.delete} />
+          <button className="destroy" onClick={this.deleteTask} />
         </div>
         <input
           ref={this.taskInput}
