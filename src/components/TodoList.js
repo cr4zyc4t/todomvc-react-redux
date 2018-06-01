@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoItem from './TodoItem';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class TodoList extends React.Component {
   // static propTypes = {
