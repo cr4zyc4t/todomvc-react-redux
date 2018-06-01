@@ -3,17 +3,17 @@ import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
 
 class TodoList extends React.Component {
-  static propTypes = {
-    filteredTasks: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      completed: PropTypes.bool.isRequired,
-    })).isRequired,
-    editTask: PropTypes.func.isRequired,
-    deleteTask: PropTypes.func.isRequired,
-    toggleTask: PropTypes.func.isRequired,
-    toggleAll: PropTypes.func.isRequired,
-  }
+  // static propTypes = {
+  //   filteredTasks: PropTypes.arrayOf(PropTypes.shape({
+  //     id: PropTypes.string.isRequired,
+  //     title: PropTypes.string.isRequired,
+  //     completed: PropTypes.bool.isRequired,
+  //   })).isRequired,
+  //   editTask: PropTypes.func.isRequired,
+  //   deleteTask: PropTypes.func.isRequired,
+  //   toggleTask: PropTypes.func.isRequired,
+  //   toggleAll: PropTypes.func.isRequired,
+  // }
 
   toggleAll = (e) => {
     let checked = e.target.checked;
@@ -43,11 +43,11 @@ class TodoList extends React.Component {
             this.props.filteredTasks.map((task) => {
               return (
                 <TodoItem
-                  key={task.id}
-                  delete={this.deleteTask(task.id)}
-                  edit={this.editTask(task.id)}
-                  toggleTask={this.toggleTask(task.id)}
-                  {...task}
+                  key={task.get('id')}
+                  delete={this.deleteTask(task.get('id'))}
+                  edit={this.editTask(task.get('id'))}
+                  toggleTask={this.toggleTask(task.get('id'))}
+                  {...task.toJS()}
                 />
               );
             })

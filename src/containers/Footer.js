@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import { countRemainingTasks } from '../store/selectors';
 
 const mapStateToProps = (state) => ({
-  filter: state.filter,
+  filter: state.get('filter'),
   remainingTasks: countRemainingTasks(state),
 });
 

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
-import TodoApp from './components/TodoApp';
+import TodoApp from './TodoApp';
 
 import store from './store';
 

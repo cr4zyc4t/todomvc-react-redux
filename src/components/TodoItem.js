@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 class TodoItem extends React.Component {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired,
-    delete: PropTypes.func.isRequired,
-    edit: PropTypes.func.isRequired,
-    toggleTask: PropTypes.func.isRequired,
-  }
+  // static propTypes = {
+  //   id: PropTypes.string.isRequired,
+  //   title: PropTypes.string.isRequired,
+  //   completed: PropTypes.bool.isRequired,
+  //   delete: PropTypes.func.isRequired,
+  //   edit: PropTypes.func.isRequired,
+  //   toggleTask: PropTypes.func.isRequired,
+  // }
 
   constructor(props) {
     super(props);

@@ -1,41 +1,26 @@
+import Immutable from 'immutable';
 import { ADD_TASK, EDIT_TASK, DELETE_TASK, TOGGLE_TASK, CLEAR_COMPLETED, TOGGLE_ALL } from '../../actions/tasks';
 
 const addTask = (state, { id, title }) => {
-  return [{
+  let newTask = Immutable.Map({
     id,
     title,
     completed: false
-  }, ...state];
+  });
+  return state.unshift(newTask);
 };
 
 const editTask = (state, { id, title }) => {
-  return state.map(task => {
-    if (task.id === id) {
-      return {
-        id,
-        title,
-        completed: task.completed
-      };
-    }
-    return task;
-  });
+  return state.update(state.findIndex(task => task.get('id') === id), (task) => task.set('title', title));
 };
 
-const deleteTask = (state, { id }) => state.filter(task => task.id !== id);
+const deleteTask = (state, { id }) => state.delete(state.findIndex(task => task.get('id') === id));
 
-const toggleTask = (state, { id }) => state.map(task => {
-  if (task.id === id) {
-    return {
-      ...task,
-      completed: !task.completed
-    };
-  }
-  return task;
-});
+const toggleTask = (state, { id }) => state.update(state.findIndex(task => task.get('id') === id), (task) => task.set('completed', !task.get('completed')));
 
-const clearCompleted = (state) => state.filter(task => !task.completed);
+const clearCompleted = (state) => state.filter(task => !task.get('completed'));
 
-const toggleAll = (state, { checked }) => state.map(task => ({ ...task, completed: checked }));
+const toggleAll = (state, { checked }) => state.map(task => task.set('completed', checked));
 
 const handlers = {
   [ADD_TASK]: addTask,

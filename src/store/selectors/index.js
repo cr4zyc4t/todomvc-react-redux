@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-const tasks = state => state.tasks;
-const filter = state => state.filter;
+const tasks = state => state.get('tasks');
+const filter = state => state.get('filter');
 
 export const getFilteredTasks = createSelector(
   tasks,
@@ -11,9 +11,9 @@ export const getFilteredTasks = createSelector(
       case 'all':
         return tasks;
       case 'active':
-        return tasks.filter(task => !task.completed);
+        return tasks.filter(task => !task.get('completed'));
       case 'completed':
-        return tasks.filter(task => task.completed);
+        return tasks.filter(task => task.get('completed'));
       default:
         break;
     }
@@ -23,6 +23,6 @@ export const getFilteredTasks = createSelector(
 export const countRemainingTasks = createSelector(
   tasks,
   (tasks) => {
-    return tasks.filter(task => !task.completed).length;
+    return tasks.filter(task => ! task.get('completed')).size;
   }
 );
