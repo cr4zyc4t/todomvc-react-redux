@@ -17,8 +17,8 @@ class Footer extends React.Component {
   }
 
   render() {
-    let { remainingTasks, filter, clearCompleted } = this.props;
-    let activeTodoWord = pluralize('item', remainingTasks);
+    const { remainingTasks, filter, clearCompleted } = this.props;
+    const activeTodoWord = pluralize('item', remainingTasks);
     return (
       <footer className="footer">
         <span className="todo-count">

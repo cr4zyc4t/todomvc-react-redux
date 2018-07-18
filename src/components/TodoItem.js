@@ -43,7 +43,7 @@ class TodoItem extends React.Component {
     this.setState({
       editing: false
     });
-    let title = this.taskInput.current.value.trim();
+    const title = this.taskInput.current.value.trim();
     if (title && title !== this.props.title) {
       this.props.editTask(this.props.id, title);
     }

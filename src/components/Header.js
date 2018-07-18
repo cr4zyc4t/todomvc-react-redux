@@ -12,7 +12,7 @@ class Header extends React.Component {
       return;
     }
 
-    let taskTitle = e.target.value.trim();
+    const taskTitle = e.target.value.trim();
 
     if (taskTitle) {
       this.props.addTask(uuid(), taskTitle);

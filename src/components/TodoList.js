@@ -13,7 +13,7 @@ class TodoList extends React.Component {
   }
 
   toggleAll = (e) => {
-    let checked = e.target.checked;
+    const { checked } = e.target;
     this.props.toggleAll(checked);
   }
 

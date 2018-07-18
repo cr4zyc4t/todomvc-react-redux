@@ -15,7 +15,7 @@ if (savedTodos) {
  * Save to localstorage on every state change
  */
 const saveToStorage = store => next => action => {
-  let result = next(action);
+  const result = next(action);
   localStorage.setItem('todomvc-react-redux', JSON.stringify(store.getState()));
   return result;
 };

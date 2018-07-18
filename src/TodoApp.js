@@ -11,9 +11,9 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div className="todoapp">
-        <Header/>
+        <Header />
         <TodoList />
-        <Footer/>
+        <Footer />
       </div>
     );
   }
